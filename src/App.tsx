@@ -68,7 +68,7 @@ const App = () => {
         {userAnswers.length === TOTAL_QUESTIONS ? <button className="start" onClick={() => { setGameOver(true); setUserAnswers([])} }>Back To Start</button> : null}
         {gameOver ? <QuizForm startTrivia={startTrivia} setCategory={setCategory}/> : null}
         {!gameOver ? <p className="score">Score: {score}</p> : null}
-        {loading ? <p style={{"color": "black"}}>Loading Questions....</p> : null}
+        {loading ? <p style={{"color": "blue"}}>Loading Questions....</p> : null}
         {!loading && !gameOver ? (<QuestionCard
           questionNr={number + 1}
           totalQuestions={TOTAL_QUESTIONS}
