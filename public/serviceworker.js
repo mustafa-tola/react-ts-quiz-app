@@ -5,7 +5,7 @@ const assets = [
   '/logo192.png',
 //   '/static/js/bundle.js',
 //   '/static/js/main.chunk.js',
-  '/sockjs-node',
+//   '/sockjs-node',
   'https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple&category=',
 ];
 
