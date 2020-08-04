@@ -3,7 +3,6 @@ const assets = [
   '/',
   '/favicon.ico',
   '/logo192.png',
-  '/main.6297310c0c46aa8515e4.hot-update.js',
   '/static/js/1.chunk.js',
   '/static/js/bundle.js',
   '/static/js/main.chunk.js',
