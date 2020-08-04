@@ -3,7 +3,7 @@ const assets = [
   '/',
   '/favicon.ico',
   '/logo192.png',
-  '/static/js/bundle.js',
+//   '/static/js/bundle.js',
   '/static/js/main.chunk.js',
   '/sockjs-node',
   // 'https://opentdb.com/api_category.php',
