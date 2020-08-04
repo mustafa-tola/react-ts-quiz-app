@@ -4,10 +4,8 @@ const assets = [
   '/favicon.ico',
   '/logo192.png',
 //   '/static/js/bundle.js',
-  '/static/js/main.chunk.js',
+//   '/static/js/main.chunk.js',
   '/sockjs-node',
-  // 'https://opentdb.com/api_category.php',
-  // 'https://png.pngtree.com/png-vector/20191021/ourmid/pngtree-speech-sign-text-quiz-time-vector-illustration-png-image_1824077.jpg',
   'https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple&category=',
 ];
 
