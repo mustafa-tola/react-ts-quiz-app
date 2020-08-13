@@ -4,6 +4,7 @@ import { fetchQuizQuestions, Difficulty, QuestionState } from "./API/API";
 import QuestionCard from "./components/QuestionCard";
 import QuizForm from "./components/QuizForm";
 import { GlobalStyle, Wrapper } from "./Styles/App.styles";
+import { firebase } from "./firebase";
 
 export type AnswerObject = {
   question: string;
@@ -62,15 +63,44 @@ const App = () => {
   }
 
   const setState = () => {
-    setGameOver(true); 
+    setGameOver(true);
     setUserAnswers([])
   }
+
+  const firebaseMessaging = () => {
+    const messaging = firebase.messaging();
+    messaging.requestPermission().then(() => {
+      messaging.getToken().then((currentToken) => {
+        if (currentToken) {
+          console.log("Token:", currentToken);
+        } else {
+          console.log('No Instance ID token available. Request permission to generate one.');
+        }
+      }).catch((err) => {
+        console.log('An error occurred while retrieving token. ', err);
+      });
+    })
+    messaging.onTokenRefresh(() => {
+      messaging.getToken().then((refreshedToken) => {
+        console.log('Token refreshed.');
+        // Indicate that the new Instance ID token has not yet been sent to the
+        // app server.
+        console.log("Refreshed Token", refreshedToken);
+        // ...
+      }).catch((err) => {
+        console.log('Unable to retrieve refreshed token ', err);
+      });
+    });
+  }
+
+  firebaseMessaging();
   return (
     <>
       <GlobalStyle />
       <Wrapper>
         <h1>React Quiz</h1>
         {userAnswers.length === TOTAL_QUESTIONS ? <button className="start" onClick={() => { setState() }}>Back To Start</button> : null}
+        {!navigator.onLine && gameOver ? <h3>You are Offline,So,You can play Only Random Category</h3>:null}
         {gameOver ? <QuizForm startTrivia={startTrivia} setCategory={setCategory} /> : null}
         {!gameOver ? <p className="score">Score: {score}</p> : null}
         {loading ? <h3>Loading Questions....</h3> : null}
